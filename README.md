@@ -1,0 +1,1 @@
+AI-driven dynamic-pricing and demand-forecasting e-commerce project
