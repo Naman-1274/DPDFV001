@@ -1,0 +1,17 @@
+pandas
+sqlalchemy
+pymysql
+cryptography
+# numpy 
+# scikit-learn 
+# matplotlib 
+# seaborn
+# tensorflow 
+# prophet 
+# xgboost 
+# shap
+# flask 
+# fastapi 
+# uvicorn 
+# streamlit
+# stable-baselines3[extra]

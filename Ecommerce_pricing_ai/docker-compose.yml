@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: ecommerce-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ecommerce
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: reallysecure
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  etl:
+    build:
+      context: .
+      dockerfile: Dockerfile.etl
+    container_name: etl-job
+    depends_on:
+      - db
+    volumes:
+      - ./data/Raw:/app/data/Raw
+      - ./data/Processed:/app/data/Processed
+      - ./data/Logs:/app/data/Logs  # Added volume for logs
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: ecommerce
+      DB_USER: appuser
+      DB_PASS: reallysecure
+    command: ["python", "etl.py"]
+
+volumes:
+  db_data:

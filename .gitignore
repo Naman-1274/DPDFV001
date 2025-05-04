@@ -1,1 +1,5 @@
 venv/
+environment.yml
+*.pyc
+__pycache__/
+Ecommerce_pricing_ai/data
